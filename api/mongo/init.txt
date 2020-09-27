@@ -1,0 +1,16 @@
+// use mongo CLI: mongo
+
+// Set/switch database
+use react-app
+
+// Get all users
+db.users.find().pretty()
+
+// More users
+users = [{ "firstName": "first 1", "lastName": "last 1",  "email": "firstlast1@test.com" , }, 
+{  "firstName": "first 2", "lastName": "last 2",  "email": "firstlast2@test.com"}, 
+{ "firstName": "first 3", "lastName": "last 3",  "email": "firstlast3@test.com" }]
+db.users.insert(users);
+
+// Get all users
+db.users.find().pretty()
