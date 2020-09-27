@@ -21,11 +21,24 @@
   }
 
   .app-header {
+    position: relative;
     padding: 0 24px;
+
     h2 {
       color: white;
       line-height: unset;
       margin: 0;
     }
+
+    .api-status {
+      position: absolute;
+      padding: 0;
+      right: 10px;
+      top: 10px;
+
+      .anticon {
+        font-size: 40px;
+      }
+    };
   }
 }

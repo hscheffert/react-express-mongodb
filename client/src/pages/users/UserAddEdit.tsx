@@ -14,7 +14,7 @@ export default function UserAddEdit() {
   const submitForm = async (dto: UserDto) => {
     setLoading(true);
     try {
-      const res = await UserService.create(dto);
+      await UserService.create(dto);
       HistoryUtil.push(Routes.Home);
     } catch (error) {
       notification.error({

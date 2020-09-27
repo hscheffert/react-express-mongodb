@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 import { Layout, Typography } from 'antd';
 import { Link } from 'react-router-dom';
 import Routes from '../constants/Routes';
+import ApiStatus from '../components/ApiStatus';
 
 const { Content } = Layout;
 
@@ -13,6 +14,7 @@ const MainLayout: FunctionComponent<{}> = (props) => {
         <Link to={Routes.Home}>
           <Typography.Title level={2}>React Express App</Typography.Title>
         </Link>
+        <ApiStatus />
       </Layout.Header>
 
       <Layout className="site-layout">

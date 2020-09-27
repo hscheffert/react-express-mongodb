@@ -1,4 +1,4 @@
-import { Col, notification, Result, Row } from "antd";
+import { Result } from "antd";
 import React, { useEffect, useState } from "react";
 import TestService from "../services/TestService";
 
@@ -8,7 +8,7 @@ export default function ApiStatus() {
   const testApiAsync = async () => {
     try {
       const res = await TestService.testApi();
-      setApiUp(true);
+      setApiUp(res);
     } catch (error) {
       setApiUp(false);
     }
@@ -17,15 +17,11 @@ export default function ApiStatus() {
   useEffect(() => {
     testApiAsync();
   }, []);
-
+  
   return (
-    <Row justify="center">
-      <Col>
-        <Result
-          status={apiUp ? 'success' : 'error'}
-          title={apiUp ? 'API is Up!' : 'API is down :('}
-          />
-      </Col>
-    </Row>
+    <Result
+      className="api-status"
+      status={apiUp ? 'success' : 'error'}
+    />
   );
 }

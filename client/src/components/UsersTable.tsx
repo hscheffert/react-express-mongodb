@@ -1,4 +1,4 @@
-import { Button, Col, notification, Result, Row, Space, Table, Typography } from "antd";
+import { Button, notification, Row, Space, Table, Typography } from "antd";
 import React, { useEffect, useState } from "react";
 import UserDto from "../models/UserDto";
 import UserService from "../services/UserService";
@@ -24,7 +24,7 @@ export default function UsersTable() {
 
   const deleteAsync = async (id: string) => {
     try {
-      const res = await UserService.delete(id);
+      await UserService.delete(id);
       setUsers(users.filter(x => x._id !== id));
     } catch (error) {
       notification.error({
@@ -54,7 +54,7 @@ export default function UsersTable() {
     title: 'Active',
     dataIndex: 'isActive',
     key: 'isActive',
-    render: (text: string, user: UserDto) => {
+    render: (_: string, user: UserDto) => {
       if (user.isActive) {
         return <CheckCircleTwoTone twoToneColor={'#52c41a'} />;
       } else {
@@ -65,7 +65,7 @@ export default function UsersTable() {
     title: 'Actions',
     dataIndex: 'actions',
     key: 'actions',
-    render: (text: string, user: UserDto) => (
+    render: (_: string, user: UserDto) => (
       <Space direction="horizontal" style={{ justifyContent: 'space-between', width: '100%' }}>
         <DeleteOutlined onClick={() => deleteAsync(user._id)} />
       </Space>
